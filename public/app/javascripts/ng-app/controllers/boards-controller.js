@@ -1,9 +1,15 @@
 'use strict';
 
 function BoardsController($scope, $rootScope, BoardsService, SERVICE_EVENTS) {
+  $scope.getBoardUrl = function(board) {
+    return "/boards/" + board.id;
+  }
+
   $scope.setBoards = function(event, boards) {
     $scope.boards = boards;
-    console.log($scope.boards);
+
+    // update the template immediately;
+    $scope.$apply();
   }
 
   $rootScope.$on(SERVICE_EVENTS.boardsUpdated, $scope.setBoards);
