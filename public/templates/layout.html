@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myTrello">
+  <head>
+    <title>Todos</title>
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="vendor/bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="stylesheets/app.css">
+
+    <!-- viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  </head>
+
+  <body>
+
+    <!-- navbar  -->
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <div class="input-field">
+            <input id="search" type="search" required />
+            <label for="search"><i class="mdi-action-search"></i></label>
+            <i class="mdi-navigation-close"></i>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div ng-view></div>
+
+    <!-- link javascripts -->
+    <!-- jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Angular Components -->
+    <script src="vendor/bower_components/angular/angular.min.js"></script>
+    <script src="vendor/bower_components/angular-route/angular-route.min.js"></script>
+
+    <!-- Angular Material Dependencies -->
+    <script src="vendor/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="vendor/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="vendor/bower_components/angular-material/angular-material.min.js"></script>
+
+    <!-- Trello API -->
+    <script src="https://api.trello.com/1/client.js?key=b8df8237922a22c7ab9bfa0296b22266"></script>
+
+    <!-- custom javascripts -->
+    <script src="javascripts/myTrello.js"></script>
+    <script src="javascripts/ng-app/app.js"></script>
+
+    <!-- link services -->
+    <script src="javascripts/ng-app/services/boardsService.js"></script>
+
+    <!-- link controllers -->
+    <script src="javascripts/ng-app/controllers/boardsController.js"></script>
+
+    <script src="javascripts/ng-app/config/constants.js"></script>
+  </body>
+</html>
