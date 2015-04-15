@@ -1,5 +1,6 @@
-myTrello.service("BoardsService", function($rootScope, SERVICE_EVENTS) {
+"use strict";
 
+function BoardsService($rootScope, SERVICE_EVENTS) {
   var self = this;
 
   this.setBoards = function(boards) {
@@ -9,10 +10,13 @@ myTrello.service("BoardsService", function($rootScope, SERVICE_EVENTS) {
 
   this.getBoards = function() {
     return self.boards;
-  }
+  };
 
   this.reload = function() {
-    var boards = MyTrello.boards("me");
-    self.setBoards(boards);
-  }
-});
+    MyTrello.boards("me", function(boards) {
+      self.setBoards(boards)
+    })
+  };
+}
+
+myTrello.service("BoardsService", BoardsService);

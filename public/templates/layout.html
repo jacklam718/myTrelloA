@@ -13,19 +13,33 @@
   <body>
 
     <!-- navbar  -->
-    <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
-          <div class="input-field">
-            <input id="search" type="search" required />
-            <label for="search"><i class="mdi-action-search"></i></label>
-            <i class="mdi-navigation-close"></i>
-          </div>
+    <div layout="column" layout-fill>
+      <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">
+          <h3>
+            <span>MyTrello</span>
+          </h3>
         </div>
-      </nav>
+      </md-toolbar>
+      <md-content style="height: 705px;">
+        <!-- render partial template -->
+        <div ng-view>
+        </div>
+        <!-- <md-list> -->
+          <!-- <md-list-item class="md-3-line" ng-repeat="item in todos"> -->
+            <!-- <img ng-src="{{item.face}}" alt="{{item.who}}" class="md-avatar"> -->
+            <!-- <div class="md-tile-content"> -->
+              <!-- <h3>{{item.what}}</h3> -->
+              <!-- <h4>{{item.who}}</h4> -->
+              <!-- <p> -->
+                <!-- {{item.notes}} -->
+              <!-- </p> -->
+            <!-- </div> -->
+            <!-- <md-divider inset></md-divider> -->
+          <!-- </md-list-item> -->
+        <!-- </md-list> -->
+      </md-content>
     </div>
-
-    <div ng-view></div>
 
     <!-- link javascripts -->
     <!-- jquery -->
@@ -45,14 +59,14 @@
 
     <!-- custom javascripts -->
     <script src="javascripts/myTrello.js"></script>
-    <script src="javascripts/ng-app/app.js"></script>
+    <script src="javascripts/ng-app/ng-app.js"></script>
 
     <!-- link services -->
-    <script src="javascripts/ng-app/services/boardsService.js"></script>
+    <script src="javascripts/ng-app/services/boards-service.js"></script>
 
     <!-- link controllers -->
-    <script src="javascripts/ng-app/controllers/boardsController.js"></script>
+    <script src="javascripts/ng-app/controllers/boards-controller.js"></script>
 
-    <script src="javascripts/ng-app/config/constants.js"></script>
+    <!-- // <script src="javascripts/ng-app/config/constants.js"></script> -->
   </body>
 </html>

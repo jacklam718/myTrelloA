@@ -12,29 +12,33 @@ MyTrello.logout = function() {
   this.deauthorize();
 };
 
-MyTrello.boards = function(userId) {
+MyTrello.boards = function(userId, func) {
   var path = "/members/" + userId + "/boards";
 
-  return this.get(path, function(boards) {
-    return boards;
+  this.get(path, function(boards) {
+    func(boards);
   })
 };
 
-MyTrello.boardLists = function(boardId) {
+MyTrello.boardLists = function(boardId, func) {
   path = "/boards/" + boardId + "/lists";
 
-  return this.get(path, function(lists) {
-    return lists;
+  this.get(path, function(lists) {
+    func(list);
   })
 };
 
-MyTrello.ListCards = function(listId) {
+MyTrello.ListCards = function(listId, func) {
   path = "/lists/" + listId + "/cards";
 
-  return this.get(path, function(cards) {
-    return cards;
+  this.get(path, function(cards) {
+    func(cards)
   })
 };
+
+MyTrello.search = function(query, func) {
+  var path = "/search";
+}
 
 MyTrello.markRead = function(cardId, boardId) {
   var path = "/cards/" + cardId + "/labels";
@@ -62,8 +66,5 @@ MyTrello.postComment = function(cardId, comment) {
   this.post(path, {text: comment});
 };
 
-MyTrello.search = function(query) {
-  var path = "/search";
-}
 
 MyTrello.login();
