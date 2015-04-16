@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html ng-app="myTrello">
   <head>
+    <base href="/">
     <title>Todos</title>
     <!-- stylesheets -->
-    <link rel="stylesheet" href="vendor/bower_components/angular-material/angular-material.min.css">
-    <link rel="stylesheet" href="stylesheets/app.css">
+    <link rel="stylesheet" href="/vendor/bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="/stylesheets/app.css">
 
     <!-- viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -23,7 +24,7 @@
       </md-toolbar>
       <md-content style="height: 705px;">
         <!-- render partial template -->
-        <div ng-view>
+        <div ng-view style="height: 100%;">
         </div>
         <!-- <md-list> -->
           <!-- <md-list-item class="md-3-line" ng-repeat="item in todos"> -->
@@ -46,28 +47,28 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
     <!-- Angular Components -->
-    <script src="vendor/bower_components/angular/angular.min.js"></script>
-    <script src="vendor/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/vendor/bower_components/angular/angular.min.js"></script>
+    <script src="/vendor/bower_components/angular-route/angular-route.min.js"></script>
 
     <!-- Angular Material Dependencies -->
-    <script src="vendor/bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="vendor/bower_components/angular-aria/angular-aria.min.js"></script>
-    <script src="vendor/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="/vendor/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/vendor/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="/vendor/bower_components/angular-material/angular-material.min.js"></script>
 
     <!-- Trello API -->
     <script src="https://api.trello.com/1/client.js?key=b8df8237922a22c7ab9bfa0296b22266"></script>
 
     <!-- custom javascripts -->
-    <script src="javascripts/myTrello.js"></script>
-    <script src="javascripts/ng-app/ng-app.js"></script>
+    <script src="/javascripts/myTrello.js"></script>
+    <script src="/javascripts/ng-app/ng-app.js"></script>
 
     <!-- link services -->
-    <script src="javascripts/ng-app/services/boards-service.js"></script>
-    <script src="javascripts/ng-app/services/board-service.js"></script>
+    <script src="/javascripts/ng-app/services/boards-service.js"></script>
+    <script src="/javascripts/ng-app/services/board-service.js"></script>
 
     <!-- link controllers -->
-    <script src="javascripts/ng-app/controllers/boards-controller.js"></script>
-    <script src="javascripts/ng-app/controllers/board-controller.js"></script>
+    <script src="/javascripts/ng-app/controllers/boards-controller.js"></script>
+    <script src="/javascripts/ng-app/controllers/board-controller.js"></script>
 
     <!-- // <script src="javascripts/ng-app/config/constants.js"></script> -->
   </body>

@@ -1,0 +1,25 @@
+md-toolbar.lists-toolbar {
+  background-color: #fefefe;
+  color: #454545;
+}
+
+a.list-btn {
+  width: 100%;
+  height: 80px;
+  text-align: left;
+  line-height: 70px;
+}
+
+li.ng-scope {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+md-list-item {
+  display: -webkit-flex;
+  display: flex;
+}
