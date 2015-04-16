@@ -7,7 +7,12 @@ require "pry"
 require "sinatra/content_for"
 
 Dotenv.load
+
 set :sessions, true
+set :static, true
+
+use Rack::Static, :urls => ['stylesheets', 'javascripts', 'vendor'], :root => 'public/app'
+
 
 Trello.configure do |config|
   config.developer_public_key = ENV["KEY"]
@@ -70,6 +75,9 @@ get "/" do
 end
 
 get "/boards/:id" do
-  # File.read(File.join(templatesPath, "layout.html"));
+  html :layout
+end
 
+get "/boards" do
+  html :layout
 end
