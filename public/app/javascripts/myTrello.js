@@ -20,11 +20,19 @@ MyTrello.boards = function(userId, func) {
   })
 };
 
+MyTrello.board = function(boardId, func) {
+  var path = "/boards/" + boardId;
+
+  this.get(path, function(boad) {
+    func(boad);
+  })
+}
+
 MyTrello.boardLists = function(boardId, func) {
   path = "/boards/" + boardId + "/lists";
 
   this.get(path, function(lists) {
-    func(list);
+    func(lists);
   })
 };
 
