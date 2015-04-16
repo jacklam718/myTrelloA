@@ -2,27 +2,36 @@
 
 var myTrello = angular.module("myTrello", [
   "ngRoute",
-  "ngMaterial"
+  "ngMaterial",
 ]);
 
-function config($routeProvider, $mdThemingProvider) {
+function config($routeProvider, $locationProvider, $mdThemingProvider) {
   $routeProvider
     .when("/", {
-      templateUrl: "/templates/partials/boards.html",
-      controller: "BoardsController"
+      controller: "BoardsController",
+      templateUrl: "templates/partials/boards.html"
     })
-    .when("boards/:id", {
-      templateUrl: "/templates/partials/boards-show.html",
-      controller: "BoardController"
+    .when("/boards", {
+      controller: "BoardController",
+      templateUrl: "templates/partials/boards-show.html"
+      // templateUrl: "templates/partials/boards.html"
+    })
+    .when("/boards/:id", {
+      controller: "BoardController",
+      templateUrl: "templates/partials/boards-show.html"
     })
 
-  // $mdThemingProvider.theme('default').default();
+  $locationProvider.html5Mode(true).hashPrefix('!');
+
+  $mdThemingProvider.theme('default')
+    .accentPalette('orange');
 }
 
 // define constants
 myTrello.constant("SERVICE_EVENTS", {
   boardsUpdated: "boards-updated",
-  boardUpdated: "board-updated"
+  boardUpdated: "board-updated",
+  boardListsUpdated: "board-lists-updated"
 })
 
 myTrello.config(config)
