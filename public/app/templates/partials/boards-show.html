@@ -8,10 +8,8 @@
 
       <md-content>
         <md-list role="list" class="md-default-theme">
-          <md-list-item role="listitem" class="md-3-line md-no-proxy" ng-repeat="(index, list) in boardLists">
-            <!-- <div ng-if="index === 0 && requestListCardsByListId(list.id)"></div> -->
+          <md-list-item ng-init="index === 0 && requestListCardsByListId(list.id)" role="listitem" class="md-3-line md-no-proxy" ng-repeat="(index, list) in boardLists">
             <md-button ng-href="#" ng-click="requestListCardsByListId(list.id)" class="list-btn">
-              <!-- <div ng-if="index === 0 && requestListCardsByListId(list.id)"></div> -->
               <span>
                 {{ list.name }}
               </span>
@@ -21,18 +19,25 @@
       </md-content>
     </md-sidenav>
 
-    <!-- <md-content flex layout-padding class="md-default-theme">
+    <md-content flex layout-padding class="md-default-theme">
       <div class="cards">
-        <md-card >
+        <md-card ng-repeat="card in listCards">
           <md-card-content>
-            <h2 class="md-title">Paracosm</h2>
-            <p>
-              The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-            </p>
+            <h3 class="md-title card-name">
+              {{ card.name }}
+            </h3>
+
+            <div class="disc-content" ng-show="card.desc !== ''">
+              <h4 class="md-title">
+                Description
+              </h4>
+              <p>
+                {{ card.desc }}
+              </p>
+            </div>
           </md-card-content>
         </md-card>
       </div>
-    </md-content> -->
+    </md-content>
   </section>
 </div>

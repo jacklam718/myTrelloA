@@ -33,14 +33,9 @@ function BoardService($rootScope, $routeParams, SERVICE_EVENTS) {
   }
 
   this.requestListCardsByListId = function(listId) {
-    if (self.lastRequestListId !== listId) {
-      console.log(self.lastRequestListId, listId);
-      MyTrello.listCards(listId, function(listCards) {
-        self.setListCards(listCards);
-        // console.log("listCards", listCards);
-      })
-    }
-    self.lastRequestListId = listId;
+    MyTrello.listCards(listId, function(listCards) {
+      self.setListCards(listCards);
+    })
   };
 
   this.reload = function() {

@@ -7,10 +7,10 @@ function BoardsController($scope, $rootScope, BoardsService, SERVICE_EVENTS) {
   }
 
   $scope.setBoards = function(event, boards) {
-    $scope.boards = boards;
-
-    // update the template immediately;
-    $scope.$apply();
+    // imform angular the model data changed
+    $scope.$apply(function() {
+      $scope.boards = boards;
+    });
   }
 
   $rootScope.$on(SERVICE_EVENTS.boardsUpdated, $scope.setBoards);

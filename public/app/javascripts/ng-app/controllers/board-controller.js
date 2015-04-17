@@ -1,14 +1,11 @@
-"use strict";
+// "use strict";
 
 function BoardController($scope, $rootScope, BoardService, SERVICE_EVENTS) {
 
-  $scope.init = function() {
-    console.log("init");
-  }
-
   $scope.setBoard = function(event, board) {
-    $scope.board = board;
-    $scope.$apply();
+    $scope.$apply(function() {
+      $scope.board = board;
+    });
   };
 
   $scope.getBoard = function() {
@@ -16,8 +13,9 @@ function BoardController($scope, $rootScope, BoardService, SERVICE_EVENTS) {
   }
 
   $scope.setBoardLists = function(event, boardLists) {
-    $scope.boardLists = boardLists;
-    $scope.$apply();
+    $scope.$apply(function() {
+      $scope.boardLists = boardLists;
+    });
   }
 
   $scope.getBoardLists = function() {
@@ -25,8 +23,14 @@ function BoardController($scope, $rootScope, BoardService, SERVICE_EVENTS) {
   }
 
   $scope.setListCards = function(event, listCards) {
-    $scope.listCards = listCards
-    $scope.$apply();
+    card = listCards[0]
+    $scope.$apply(function() {
+      $scope.listCards = listCards
+    });
+  }
+
+  $scope.getListCards = function() {
+    return BoardService.getListCards();
   }
 
   $scope.requestListCardsByListId = function(listId) {
@@ -37,7 +41,6 @@ function BoardController($scope, $rootScope, BoardService, SERVICE_EVENTS) {
   $rootScope.$on(SERVICE_EVENTS.boardListsUpdated, $scope.setBoardLists);
   $rootScope.$on(SERVICE_EVENTS.listCardsUpdated, $scope.setListCards);
 
-  console.log("ssss");
   BoardService.reload();
 }
 
