@@ -23,12 +23,33 @@ function BoardService($rootScope, $routeParams, SERVICE_EVENTS) {
     return self.boardLists;
   };
 
+  this.setListCards = function(listCards) {
+    self.listCards = listCards;
+    $rootScope.$broadcast(SERVICE_EVENTS.listCardsUpdated, listCards);
+  };
+
+  this.getListCards = function() {
+    return self.listCards;
+  }
+
+  this.requestListCardsByListId = function(listId) {
+    if (self.lastRequestListId !== listId) {
+      console.log(self.lastRequestListId, listId);
+      MyTrello.listCards(listId, function(listCards) {
+        self.setListCards(listCards);
+        // console.log("listCards", listCards);
+      })
+    }
+    self.lastRequestListId = listId;
+  };
+
   this.reload = function() {
     MyTrello.board($routeParams.id, function(board) {
       self.setBoard(board);
     })
 
     MyTrello.boardLists($routeParams.id, function(boardLists) {
+      console.log(boardLists);
       self.setBoardLists(boardLists);
     });
   }

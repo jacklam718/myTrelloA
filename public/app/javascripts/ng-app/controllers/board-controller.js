@@ -1,5 +1,5 @@
 "use strict";
-console.log("board");
+
 function BoardController($scope, $rootScope, BoardService, SERVICE_EVENTS) {
 
   $scope.init = function() {
@@ -24,8 +24,19 @@ function BoardController($scope, $rootScope, BoardService, SERVICE_EVENTS) {
     return BoardService.getBoardLists();
   }
 
+  $scope.setListCards = function(event, listCards) {
+    $scope.listCards = listCards
+    $scope.$apply();
+  }
+
+  $scope.requestListCardsByListId = function(listId) {
+    BoardService.requestListCardsByListId(listId);
+  }
+
   $rootScope.$on(SERVICE_EVENTS.boardUpdated, $scope.setBoard);
   $rootScope.$on(SERVICE_EVENTS.boardListsUpdated, $scope.setBoardLists);
+  $rootScope.$on(SERVICE_EVENTS.listCardsUpdated, $scope.setListCards);
+
   console.log("ssss");
   BoardService.reload();
 }

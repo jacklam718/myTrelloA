@@ -36,7 +36,7 @@ MyTrello.boardLists = function(boardId, func) {
   })
 };
 
-MyTrello.ListCards = function(listId, func) {
+MyTrello.listCards = function(listId, func) {
   path = "/lists/" + listId + "/cards";
 
   this.get(path, function(cards) {

@@ -31,7 +31,8 @@ function config($routeProvider, $locationProvider, $mdThemingProvider) {
 myTrello.constant("SERVICE_EVENTS", {
   boardsUpdated: "boards-updated",
   boardUpdated: "board-updated",
-  boardListsUpdated: "board-lists-updated"
+  boardListsUpdated: "board-lists-updated",
+  listCardsUpdated: "list-cards-updated"
 })
 
 myTrello.config(config)
