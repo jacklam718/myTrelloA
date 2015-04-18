@@ -3,7 +3,7 @@
     <md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
 
       <md-toolbar class="lists-toolbar">
-        <h1 class="md-toolbar-tools">{{ getBoard().name }}</h1>
+        <h1 class="md-toolbar-tools">{{ board.name }}</h1>
       </md-toolbar>
 
       <md-content>
@@ -23,9 +23,20 @@
       <div class="cards">
         <md-card ng-repeat="card in listCards">
           <md-card-content>
-            <h3 class="md-title card-name">
-              {{ card.name }}
-            </h3>
+
+            <div layout="row">
+              <div flex="95">
+                <h3 class="md-title card-name">
+                  {{ card.name }}
+                </h3>
+              </div>
+
+              <div flex>
+                <md-button ng-click="showListBottomSheet($event, cardId=card.id)" class="md-icon-button more-btn" aria-label="More" style="height:3.8rem">
+                  <md-icon md-svg-src="more_vert"></md-icon>
+                </md-button>
+              </div>
+            </div>
 
             <div class="disc-content" ng-show="card.desc !== ''">
               <h4 class="md-title">

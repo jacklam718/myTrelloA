@@ -1,47 +1,59 @@
 // "use strict";
 
-function BoardController($scope, $rootScope, BoardService, SERVICE_EVENTS) {
+function BoardController($scope, $routeParams, $mdBottomSheet, $routeParams, $cookieStore) {
+  $scope.bottomSheet = {};
 
-  $scope.setBoard = function(event, board) {
-    $scope.$apply(function() {
-      $scope.board = board;
-    });
-  };
+  $scope.bottomSheet.items = [
+    {name: "Mark Done", icon: "done", action: MyTrello.markDone},
+    {name: "Mark Read", icon: "assignment_turned_in", action: MyTrello.markRead}
+  ]
 
-  $scope.getBoard = function() {
-    return BoardService.getBoard();
+  $scope.bottomSheet.listItemClick = function($index, $event) {
+    var clickedItem = $scope.bottomSheet.items[$index];
+    clickedItem.action.call(MyTrello, $cookieStore.get("currentBoardId"), $cookieStore.get("currentCardId"));
   }
 
-  $scope.setBoardLists = function(event, boardLists) {
-    $scope.$apply(function() {
-      $scope.boardLists = boardLists;
-    });
-  }
+  $scope.showListBottomSheet = function($event, cardId) {
+    $cookieStore.put("currentCardId", cardId)
+    $cookieStore.put("currentBoardId", $routeParams.id)
 
-  $scope.getBoardLists = function() {
-    return BoardService.getBoardLists();
-  }
-
-  $scope.setListCards = function(event, listCards) {
-    card = listCards[0]
-    $scope.$apply(function() {
-      $scope.listCards = listCards
-    });
-  }
-
-  $scope.getListCards = function() {
-    return BoardService.getListCards();
+    $mdBottomSheet.show({
+      templateUrl: "templates/partials/bottom-sheet-list.html",
+      controller: "BoardController",
+      targetEvent: $event
+    })
   }
 
   $scope.requestListCardsByListId = function(listId) {
-    BoardService.requestListCardsByListId(listId);
+    MyTrello.listCards(listId, function(listCards) {
+      $scope.$apply(function() {
+        $scope.listCards = listCards;
+      })
+    })
   }
 
-  $rootScope.$on(SERVICE_EVENTS.boardUpdated, $scope.setBoard);
-  $rootScope.$on(SERVICE_EVENTS.boardListsUpdated, $scope.setBoardLists);
-  $rootScope.$on(SERVICE_EVENTS.listCardsUpdated, $scope.setListCards);
+  $scope.reload = function() {
+    function _setBoard() {
+      MyTrello.board($routeParams.id, function(board) {
+        $scope.$apply(function() {
+          $scope.board = board;
+        })
+      })
+    };
 
-  BoardService.reload();
+    function _setBoardLists() {
+      MyTrello.boardLists($routeParams.id, function(boardLists) {
+        $scope.$apply(function() {
+          $scope.boardLists = boardLists;
+        })
+      })
+    };
+
+    _setBoard();
+    _setBoardLists();
+  }
+
+  $scope.reload();
 }
 
 myTrello.controller("BoardController", BoardController);

@@ -48,11 +48,18 @@ MyTrello.search = function(query, func) {
   var path = "/search";
 }
 
-MyTrello.markRead = function(cardId, boardId) {
+MyTrello.markRead = function(boardId, cardId) {
+  console.log(boardId, cardId);
   var path = "/cards/" + cardId + "/labels";
 
   this.post(path, {color: "blue", name: "Read", idBoard: boardId});
 };
+
+MyTrello.markDone = function(boardId, cardId) {
+  var path = "/cards/" + cardId + "/labels";
+
+  this.post(path, {color: "green", name: "Done", idBoard: boardId});
+}
 
 MyTrello.markUnread = function(cardId) {
   var path = "/cards/" + cardId + "/labels";
