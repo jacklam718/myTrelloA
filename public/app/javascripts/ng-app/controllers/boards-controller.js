@@ -1,6 +1,6 @@
 'use strict';
 
-function BoardsController($scope, $rootScope, BoardsService, SERVICE_EVENTS) {
+function BoardsController($scope, $rootScope, SERVICE_EVENTS) {
 
   $scope.getBoardUrl = function(board) {
     return "/boards/" + board.id

@@ -5,7 +5,7 @@ function BoardController($scope, $routeParams, $mdBottomSheet, $routeParams, $co
 
   $scope.bottomSheet.items = [
     {name: "Mark Done", icon: "done", action: MyTrello.markDone},
-    {name: "Mark Read", icon: "assignment_turned_in", action: MyTrello.markRead}
+    {name: "Mark Read", icon: "check_circle", action: MyTrello.markRead}
   ]
 
   $scope.bottomSheet.listItemClick = function($index, $event) {

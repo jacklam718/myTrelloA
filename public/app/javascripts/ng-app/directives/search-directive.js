@@ -1,10 +1,10 @@
-// "use strict";
+"use strict";
 
 function searchDirective($route) {
   var _originTemplateUrl = "";
   var _originController = "";
 
-  var _searchTemplateUrl = "templates/partials/search-search.html";
+  var _searchTemplateUrl = "templates/partials/search.html";
   var _searchController = "SearchController";
 
   var updateOriginTempAndCtrl = function() {
@@ -26,38 +26,19 @@ function searchDirective($route) {
 
   return {
     restrict: "A",
-    scope: {
-      searchDirective: "="
-    },
+    link: function (scope, element, attrs) {
+      var isSerarchTemplate = false;
 
-    link: function(scope, element, attrs) {
-      s = scope;
-
-      // set the initial value of the textbox
-      element.val(scope.searchDirective);
-      element.data('old-value', scope.searchDirective);
-
-      // detect outside changes and update our input
-      scope.$watch("searchDirective", function(val) {
-        element.val(scope.searchDirective);
-      });
-
-      // on blur, update the value in scope
-      element.bind("propertychange keyup paste", function(blurEvent) {
-        if (element.val() === "") {
+      scope.$watch(attrs.ngModel, function (val) {
+        if (val === "" && isSerarchTemplate === true) {
+          isSerarchTemplate = false;
           changeToOrginTempAndCtrl();
-        } else if (element.val() !== "" && scope.searchDirective === ""){
+        } else if (val !== "" && val !== undefined && isSerarchTemplate === false) {
+          isSerarchTemplate = true;
           updateOriginTempAndCtrl();
           changeToSearchTempAndCtrl();
         }
-
-        if (element.data("old-value") != element.val()) {
-          scope.$apply(function() {
-            scope.searchDirective = element.val();
-            element.data("old-value", element.val());
-          })
-        }
-      })
+      });
     }
   }
 }

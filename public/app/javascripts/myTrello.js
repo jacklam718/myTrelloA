@@ -45,7 +45,11 @@ MyTrello.listCards = function(listId, func) {
 };
 
 MyTrello.search = function(query, func) {
-  var path = "/search";
+  var path = "/search/"
+
+  this.get(path, query, function(results) {
+    func(results);
+  })
 }
 
 MyTrello.markRead = function(boardId, cardId) {
