@@ -88,7 +88,7 @@ end
 # get "/trelloCallbacks" do
 # end
 
-post "/trelloCallbacks" do
+post "/trelloCallback" do
   puts "post trelloCallbacks"
 
   puts request.body.read
