@@ -84,3 +84,9 @@ MyTrello.postComment = function(cardId, comment) {
 
   this.post(path, {text: comment});
 };
+
+MyTrello.webHook = function(desc, callbackURL, idModel, func) {
+  var path = "/webhooks/";
+
+  this.post(path, {description: desc, callbackURL: callbackURL, idModel: idModel}, func);
+}

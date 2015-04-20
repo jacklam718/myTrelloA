@@ -9,24 +9,17 @@ $(document).ready(function() {
       trelloAccounts = JSON.parse(trelloAccounts);
       currentAccount = trelloAccounts[me.id];
     } else {
-      currentAccount[me.id] = {
-        userId: me.id,
-        token: MyTrello.token(),
-        hasWebhookes: true
-      }
 
-      console.log(currentAccount);
+      MyTrello.webHook("webhooks for me", "http://my-trello.herokuapp.com/trelloCallback", me.id, function(response) {
+        currentAccount[me.id] = {
+          userId: me.id,
+          token: MyTrello.token(),
+          webHookId: response.id,
+          hasWebhooke: true
+        }
 
-      localStorage.setItem("trelloAccounts", JSON.stringify(currentAccount));
-    }
-
-    if (currentAccount.hasWebhookes !== true) {
-      $.post("https://trello.com/1/tokens/" + MyTrello.token() + "/webhooks/?key=" + MyTrello.key(), {
-        description: "Webhook for myTrello",
-        callbackURL: "http://my-trello.herokuapp.com/trelloCallback",
-        idModel: me.id
+        localStorage.setItem("trelloAccounts", JSON.stringify(currentAccount));
       })
     }
-
   })
 })
