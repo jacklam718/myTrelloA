@@ -85,8 +85,8 @@ get "/boards" do
   html :layout
 end
 
-# get "/trelloCallbacks" do
-# end
+get "/trelloCallbacks" do
+end
 
 post "/trelloCallback" do
   puts "post trelloCallbacks"
