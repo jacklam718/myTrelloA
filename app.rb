@@ -93,6 +93,6 @@ end
 post "/webhooks" do
   puts "post"
   pry
-  puts request
+  puts request.body.read
   puts params
 end
