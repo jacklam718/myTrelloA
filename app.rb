@@ -18,6 +18,8 @@ Trello.configure do |config|
   config.member_token = ENV["TRELLO_MEMBER_TOKEN"]
 end
 
+PryRemote::DefaultHost = "http://my-trello.herokuapp.com"
+
 module Sinatra::Partials
   def partial(template, *args)
     template_array = template.to_s.split('/')
