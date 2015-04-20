@@ -13,7 +13,6 @@ set :static, true
 
 use Rack::Static, :urls => ['stylesheets', 'javascripts', 'vendor'], :root => 'public/app'
 
-
 Trello.configure do |config|
   config.developer_public_key = ENV["KEY"]
   config.member_token = ENV["TRELLO_MEMBER_TOKEN"]
@@ -72,6 +71,10 @@ templatesPath = "public/app/templates/";
 
 get "/" do
   html :layout
+end
+
+post "/" do
+  puts params
 end
 
 get "/boards/:id" do
