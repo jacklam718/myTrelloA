@@ -18,8 +18,6 @@ Trello.configure do |config|
   config.member_token = ENV["TRELLO_MEMBER_TOKEN"]
 end
 
-PryRemote::DefaultHost = "http://my-trello.herokuapp.com"
-
 module Sinatra::Partials
   def partial(template, *args)
     template_array = template.to_s.split('/')
@@ -75,10 +73,6 @@ get "/" do
   html :layout
 end
 
-post "/" do
-  puts params
-end
-
 get "/boards/:id" do
   html :layout
 end
@@ -92,6 +86,6 @@ end
 
 post "/trelloCallback" do
   puts "post trelloCallback"
-  binding.remote_pry
+  # binding.pry
   puts request.body.read
 end
