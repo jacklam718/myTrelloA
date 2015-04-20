@@ -90,6 +90,6 @@ end
 
 post "/trelloCallback" do
   puts "post trelloCallback"
-  binding.pry
+  binding.remote_pry
   puts request.body.read
 end
