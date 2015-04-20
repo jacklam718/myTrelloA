@@ -82,6 +82,12 @@ get "/boards" do
   html :layout
 end
 
+get "/webhooks" do
+  puts "get"
+  puts params
+end
+
 post "/webhooks" do
+  puts "post"
   puts params
 end
