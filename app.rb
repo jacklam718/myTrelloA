@@ -85,11 +85,11 @@ get "/boards" do
   html :layout
 end
 
-get "/trelloCallbacks" do
+get "/trelloCallback" do
 end
 
 post "/trelloCallback" do
-  puts "post trelloCallbacks"
+  puts "post trelloCallback"
 
   puts request.body.read
 end
