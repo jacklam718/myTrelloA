@@ -85,14 +85,11 @@ get "/boards" do
   html :layout
 end
 
-get "/webhooks" do
-  puts "get"
-  puts params
-end
+# get "/trelloCallbacks" do
+# end
 
-post "/webhooks" do
-  puts "post"
-  pry
+post "/trelloCallbacks" do
+  puts "post trelloCallbacks"
+
   puts request.body.read
-  puts params
 end

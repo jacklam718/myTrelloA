@@ -84,6 +84,3 @@ MyTrello.postComment = function(cardId, comment) {
 
   this.post(path, {text: comment});
 };
-
-
-MyTrello.login();
