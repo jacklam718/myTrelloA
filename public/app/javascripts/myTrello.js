@@ -79,6 +79,14 @@ MyTrello.markUnread = function(cardId) {
   })
 };
 
+MyTrello.cardComments = function(cardId, func) {
+  var path = "/cards/" + cardId + "/actions";
+
+  this.get(path, function(cardComments) {
+    func(cardComments);
+  })
+}
+
 MyTrello.postComment = function(cardId, comment) {
   var path = "/cards/" + cardId + "/actions/comments";
 

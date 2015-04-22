@@ -4,7 +4,8 @@ var myTrello = angular.module("myTrello", [
   "ngRoute",
   "ngMaterial",
   "ngCookies",
-  "ngMdIcons"
+  "ngMdIcons",
+  "hyperContentFor"
 ]);
 
 function config($routeProvider, $locationProvider, $mdThemingProvider, $mdIconProvider) {
@@ -22,9 +23,7 @@ function config($routeProvider, $locationProvider, $mdThemingProvider, $mdIconPr
 
   $mdThemingProvider.theme('default')
     .accentPalette('orange');
-
   // $mdIconProvider
-
 }
 
 // define constants

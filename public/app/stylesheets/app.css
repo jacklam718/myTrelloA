@@ -19,12 +19,6 @@ md-list-item {
   display: flex;
 }
 
-/*.more-btn {
-  position: absolute;
-  height: 3.8rem;
-  right: 18px;
-}*/
-
 .search input .md-input-focused {
   background-color: #ffc852;
 }
@@ -97,4 +91,27 @@ md-input-container .md-input {
   -ms-flex-preferred-size: 26px;
   border-radius: 0;
   margin-left: 30px;
+}
+
+md-list-item  {
+  position: relative;
+  /*padding: 0px 16px;*/
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  transition: background-color 0.15s linear;
+}
+
+md-list-item md-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.more-btn {
+  position: absolute;
+  height: 2.8rem !important;
+  right: 18px;
+  top: 17px !important;
 }

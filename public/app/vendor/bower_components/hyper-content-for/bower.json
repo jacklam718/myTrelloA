@@ -1,0 +1,27 @@
+{
+  "name": "hyper-content-for",
+  "version": "1.0.1",
+  "authors": [
+    "Sindre Moen <sindrenm@gmail.com>"
+  ],
+  "main": "dist/hyper-content-for.js",
+  "keywords": [
+    "hyper",
+    "angular",
+    "content",
+    "yield",
+    "template",
+    "layout"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/hyperoslo/hyper-content-for-angular",
+  "ignore": [
+    "**/*",
+    "!dist/**/*",
+    "!LICENSE.md",
+    "!README.md"
+  ],
+  "dependencies": {
+    "angular": "~1.3"
+  }
+}

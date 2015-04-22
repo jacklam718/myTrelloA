@@ -8,6 +8,7 @@ require "sinatra/content_for"
 
 Dotenv.load
 
+set :cross_origin, true
 set :sessions, true
 set :static, true
 
@@ -37,10 +38,6 @@ module Sinatra::Partials
 end
 
 helpers Sinatra::Partials
-
-configure do
-  enable :cross_origin
-end
 
 helpers do
   def get_boards(username = "me")
@@ -79,13 +76,4 @@ end
 
 get "/boards" do
   html :layout
-end
-
-get "/trelloCallback" do
-end
-
-post "/trelloCallback" do
-  puts "post trelloCallback"
-  # binding.pry
-  puts request.body.read
 end

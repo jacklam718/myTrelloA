@@ -29,6 +29,9 @@
             <ng-md-icon icon="search" size="24" class="search"></ng-md-icon>
             <input type="text" placeholder="Search" class="md-primary" ng-change="searchCards" ng-model="searchQuery" search-directive>
           </md-input-container>
+
+          <span flex></span>
+          <hyper-yield to="header"></hyper-yield>
         </div>
       </md-toolbar>
       <md-content style="height: 705px;">
@@ -46,6 +49,8 @@
     <script src="/vendor/bower_components/angular/angular.min.js"></script>
     <script src="/vendor/bower_components/angular-route/angular-route.min.js"></script>
     <script src="/vendor/bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="/vendor/bower_components/ng-websocket/ng-websocket.js"></script>
+    <script src="/vendor/bower_components/hyper-content-for/dist/hyper-content-for.js"></script>
 
     <!-- Angular Material Dependencies -->
     <script src="/vendor/bower_components/angular-animate/angular-animate.min.js"></script>
@@ -63,16 +68,16 @@
 
     <!-- link directives -->
     <script src="/javascripts/ng-app/directives/search-directive.js"></script>
+    <script src="/javascripts/ng-app/directives/show-cards-or-comments-directive.js"></script>
 
     <!-- link services -->
     <!-- // <script src="/javascripts/ng-app/services/boards-service.js"></script> -->
-    <!-- // <script src="/javascripts/ng-app/services/board-service.js"></script> -->
+    <!-- // <script src="/javascripts/ng-app/services/data-update-service.js"></script> -->
 
     <!-- link controllers -->
     <script src="/javascripts/ng-app/controllers/boards-controller.js"></script>
     <script src="/javascripts/ng-app/controllers/board-controller.js"></script>
     <script src="/javascripts/ng-app/controllers/search-controller.js"></script>
-
     <!-- // <script src="javascripts/ng-app/config/constants.js"></script> -->
   </body>
 </html>

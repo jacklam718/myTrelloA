@@ -1,6 +1,16 @@
 <div layout="column" style="height: 100%;">
   <section layout="row" flex>
     <md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+      <hyper-content for="header">
+        <md-button ng-href="" ng-click="switchToCardsOrComments()" ng-switch="displayCardsOrComments">
+          <span ng-switch-when="true">
+            Comments
+          </span>
+          <span ng-switch-when="false">
+            Cards
+          </span>
+        </md-button>
+      </hyper-content>
 
       <md-toolbar class="lists-toolbar">
         <h1 class="md-toolbar-tools">{{ board.name }}</h1>
@@ -19,7 +29,27 @@
       </md-content>
     </md-sidenav>
 
-    <md-content flex layout-padding class="md-default-theme">
+    <md-content flex class="md-default-theme" ng-show="displayCardsOrComments !== true">
+      <div class="comments">
+        <md-list ng-repeat="cardComments in cardsComments">
+          <md-subheader class="md-no-sticky">{{ cardComments[0].data.card.name }}, {{ cardComments.length }} comments</md-subheader>
+          <md-list-item class="md-3-line" ng-repeat="cardComment in cardComments">
+            <div layout-padding class="md-list-item-text" >
+              <h3>{{ cardComment.data.text }}</h3>
+            </div>
+
+            <div flex>
+              <md-button ng-click="showListBottomSheet($event, cardId=card.id)" class="md-icon-button more-btn" aria-label="More">
+                <ng-md-icon icon="more_vert" size="24"></md-icon>
+              </md-button>
+            </div>
+          </md-list-item>
+          <md-divider></md-divider>
+        </md-list>
+      </div>
+    </md-content>
+
+    <md-content flex class="md-default-theme" ng-show="displayCardsOrComments === true">
       <div class="cards">
         <md-card ng-repeat="card in listCards">
           <md-card-content>
@@ -29,12 +59,6 @@
                 <h3 class="md-title card-name">
                   {{ card.name }}
                 </h3>
-              </div>
-
-              <div flex>
-                <md-button ng-click="showListBottomSheet($event, cardId=card.id)" class="md-icon-button more-btn" aria-label="More" style="height:3.8rem">
-                  <ng-md-icon icon="more_vert" size="24"></md-icon>
-                </md-button>
               </div>
             </div>
 
@@ -52,3 +76,9 @@
     </md-content>
   </section>
 </div>
+
+
+<!-- <md-input-container flex>
+  <label>Biography</label>
+  <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea>
+</md-input-container> -->
