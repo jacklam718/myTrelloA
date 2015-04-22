@@ -79,6 +79,19 @@ MyTrello.markUnread = function(cardId) {
   })
 };
 
+MyTrello.markCommentAsRead = function(cardId, comment, creator) {
+  var username = comment.match("@[a-zA-Z0-9]+");
+
+  if (username === null) {
+    comment = "@" + creator + " " + comment + " --Has Been Read-- ";
+  } else {
+    comment = comment.replace(username[0], "@" + creator);
+    comment += " --Has Been Read-- ";
+  }
+
+  this.postComment(cardId, comment);
+}
+
 MyTrello.cardComments = function(cardId, func) {
   var path = "/cards/" + cardId + "/actions";
 

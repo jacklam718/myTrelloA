@@ -8,19 +8,32 @@ function BoardController($scope, $routeParams, $mdBottomSheet, $routeParams, $co
   $scope.bottomSheet.items = [
     {name: "Reply", icon: "reply", action: MyTrello.markDone},
     {name: "Edit", icon: "edit", action: MyTrello.markDone},
-    {name: "Mark Done", icon: "done", action: MyTrello.markDone},
-    {name: "Mark Read", icon: "check_circle", action: MyTrello.markRead}
+    {name: "Mark Read", icon: "check_circle", action: MyTrello.markCommentAsRead}
 
   ]
 
   $scope.bottomSheet.listItemClick = function($index, $event) {
     var clickedItem = $scope.bottomSheet.items[$index];
-    clickedItem.action.call(MyTrello, $cookieStore.get("currentBoardId"), $cookieStore.get("currentCardId"));
+    itemData = $cookieStore.get("selectedItemData")
+    console.log(itemData);
+
+    switch ($index) {
+      case 0:
+        console.log();
+        break
+      case 1:
+        console.log();
+        break
+      case 2:
+        clickedItem.action.call(MyTrello, itemData.data.card.id, itemData.data.text, itemData.memberCreator.username);
+        break
+    }
+
   }
 
-  $scope.showListBottomSheet = function($event, cardId) {
-    $cookieStore.put("currentCardId", cardId)
-    $cookieStore.put("currentBoardId", $routeParams.id)
+  $scope.showListBottomSheet = function($event, itemData) {
+    console.log(itemData);
+    $cookieStore.put("selectedItemData", itemData)
 
     $mdBottomSheet.show({
       templateUrl: "templates/partials/bottom-sheet-list.html",

@@ -35,11 +35,11 @@
           <md-subheader class="md-no-sticky">{{ cardComments[0].data.card.name }}, {{ cardComments.length }} comments</md-subheader>
           <md-list-item class="md-3-line" ng-repeat="cardComment in cardComments">
             <div layout-padding class="md-list-item-text" >
-              <h3>{{ cardComment.data.text }}</h3>
+              <h3>{{ cardComment.memberCreator.username }} Say: {{ cardComment.data.text }}</h3>
             </div>
 
             <div flex>
-              <md-button ng-click="showListBottomSheet($event, cardId=card.id)" class="md-icon-button more-btn" aria-label="More">
+              <md-button ng-click="showListBottomSheet($event, cardComment)" class="md-icon-button more-btn" aria-label="More">
                 <ng-md-icon icon="more_vert" size="24"></md-icon>
               </md-button>
             </div>
@@ -76,9 +76,3 @@
     </md-content>
   </section>
 </div>
-
-
-<!-- <md-input-container flex>
-  <label>Biography</label>
-  <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea>
-</md-input-container> -->
