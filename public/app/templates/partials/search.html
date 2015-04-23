@@ -1,25 +1,22 @@
 <div>
-  <md-content>
-    <md-card ng-repeat="result in results">
-      <!-- <md-card-content> -->
-        <h2 class="md-title">{{ result.listName }}</h2>
-      <!-- </md-card-content> -->
+  <md-content ng-controller="SearchController">
+    <md-card ng-repeat="list in lists">
+      <h2 class="md-title" list-name-directive="list"></h2>
 
-      <md-card>
-        <md-card-content>
-          <h2 class="md-title">{{ result.name }}</h2>
-          <p>
-          </p>
-        </md-card-content>
-      </md-card>
-
-      <md-card>
-        <md-card-content>
-          <h2 class="md-title">{{ result.name }}</h2>
-          <p>
-          </p>
-        </md-card-content>
-      </md-card>
+      <div ng-repeat="cards in list">
+        <md-card ng-repeat="card in cards">
+          <md-card-content>
+            <h3 class="md-title">{{ card.name }}</h3>
+            <p ng-show="card.desc !== '' || car.desc !== undefined">
+              <strong>
+                Describe
+              </strong>:
+              <br>
+              {{ card.desc }}
+            </p>
+          </md-card-content>
+        </md-card>
+      </div>
     </md-card>
   </md-content>
 </div>
