@@ -1,43 +1,24 @@
 // "use strict";
 
-function BoardController($scope, $routeParams, $mdBottomSheet, $routeParams, $cookieStore) {
-  $scope.bottomSheet = {};
+function BoardController($scope, $routeParams, $mdBottomSheet, $routeParams, $cookieStore, $mdDialog) {
   $scope.displayCardsOrComments = false
   $scope.cardsComments = []
 
-  $scope.bottomSheet.items = [
-    {name: "Reply", icon: "reply", action: MyTrello.markDone},
-    {name: "Edit", icon: "edit", action: MyTrello.markDone},
-    {name: "Mark Read", icon: "check_circle", action: MyTrello.markCommentAsRead}
-
-  ]
-
-  $scope.bottomSheet.listItemClick = function($index, $event) {
-    var clickedItem = $scope.bottomSheet.items[$index];
-    itemData = $cookieStore.get("selectedItemData")
-    console.log(itemData);
-
-    switch ($index) {
-      case 0:
-        console.log();
-        break
-      case 1:
-        console.log();
-        break
-      case 2:
-        clickedItem.action.call(MyTrello, itemData.data.card.id, itemData.data.text, itemData.memberCreator.username);
-        break
-    }
-
+  $scope.showReplyCommentDialog = function($event, itemData) {
+    $cookieStore.put("selectedItemData", itemData)
+    $mdDialog.show({
+      controller: "CommentReplyDialogController",
+      templateUrl: "templates/partials/dialog.html",
+      targetEvent: $event
+    })
   }
 
   $scope.showListBottomSheet = function($event, itemData) {
     console.log(itemData);
     $cookieStore.put("selectedItemData", itemData)
-
     $mdBottomSheet.show({
+      controller: "CommentBottonSheetsListController",
       templateUrl: "templates/partials/bottom-sheet-list.html",
-      controller: "BoardController",
       targetEvent: $event
     })
   }

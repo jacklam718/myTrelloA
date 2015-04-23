@@ -60,7 +60,7 @@ end
 
 configure do
   set :root, File.dirname(__FILE__)
-  set :public_folder, 'public/app/'
+  set :public_folder, 'public/app'
   set "views", settings.root + "public/templates"
 end
 
