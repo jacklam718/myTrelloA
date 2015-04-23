@@ -1,8 +1,8 @@
 <md-bottom-sheet class="md-list md-has-header">
-  <md-subheader>Actions</md-subheader>
+  <!-- <md-subheader>Actions</md-subheader> -->
   <md-list>
-    <md-item ng-repeat="item in bottomSheet.items">
-      <md-button ng-click="bottomSheet.listItemClick($index)">
+    <md-item ng-repeat="item in items">
+      <md-button ng-click="listItemClick($index)">
         <ng-md-icon icon="{{ item.icon }}" size="24"></ng-md-icon>
         <span class="md-inline-list-icon-label">{{ item.name }}</span>
       </md-button>
