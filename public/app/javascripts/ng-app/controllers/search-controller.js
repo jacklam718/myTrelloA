@@ -1,34 +1,46 @@
-function SearchController($scope) {
-  $scope.searchQuery = "";
+function SearchController($scope, $rootScope, SERVICE_EVENTS) {
+  $scope.searchText = "";
+  $scope.results = [];
+  $scope.lists = []
 
-  // fake data
-  $scope.results = [
-    {listName: "list1", name: "name1"},
-    {listName: "list2", name: "name2"},
-    {listName: "list3", name: "name3"},
-    {listName: "list4", name: "name4"},
-    {listName: "list5", name: "name5"},
-    {listName: "list6", name: "name6"},
-    {listName: "list7", name: "name7"},
-    {listName: "list8", name: "name8"},
-    {listName: "list9", name: "name9"},
-    {listName: "list10",name: "name10"},
-  ]
+  $scope.keys = function(obj) {
+    return keys(obj)[0];
+  }
 
-
-  $scope.searchCards = function() {
-    if ($scope.searchQuery === "") {
-      return;
-    }
-
-    var query = {query: {card_fields: {name: $scope.searchQuery}}};
-    MyTrello.search(query, function(results) {
-      console.log(results);
+  $scope.requestListByListId = function(listId) {
+    console.warn(listId);
+    MyTrello.get("/lists/" + listId, function(list) {
       $scope.$apply(function() {
-        $scope.results = results;
+        $scope.listLname
       })
     })
   }
+
+  $scope.setSearchResults = function(event, results) {
+    $scope.lists = [];
+
+    var cards = results.cards;
+    cards.forEach(function(card) {
+      var idList = card.idList;
+      var hasListFound = false
+      $scope.lists.forEach(function(list) {
+        if (list[idList] !== undefined) {
+          hasListFound = true
+          list[idList].push(card)
+        }
+      })
+
+      if (hasListFound === false) {
+        var list = {};
+        list[idList] = [card]
+        $scope.lists.push(list)
+      }
+
+      $scope.$digest();
+    })
+  }
+
+  $rootScope.$on(SERVICE_EVENTS.searchResultsUpdated, $scope.setSearchResults);
 }
 
 myTrello.controller("SearchController", SearchController)

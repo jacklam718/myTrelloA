@@ -1,6 +1,6 @@
 "use strict";
 
-function searchDirective($route) {
+function searchDirective($route, $rootScope, SearchService) {
   var _originTemplateUrl = "";
   var _originController = "";
 
@@ -26,6 +26,7 @@ function searchDirective($route) {
 
   return {
     restrict: "A",
+
     link: function (scope, element, attrs) {
       var isSerarchTemplate = false;
 
@@ -37,6 +38,10 @@ function searchDirective($route) {
           isSerarchTemplate = true;
           updateOriginTempAndCtrl();
           changeToSearchTempAndCtrl();
+        }
+
+        if (val !== "" && val !== undefined) {
+          SearchService.search({query: val, modelTypes: ["cards"]})
         }
       });
     }
