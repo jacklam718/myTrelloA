@@ -31,7 +31,8 @@ myTrello.constant("SERVICE_EVENTS", {
   boardsUpdated: "boards-updated",
   boardUpdated: "board-updated",
   boardListsUpdated: "board-lists-updated",
-  listCardsUpdated: "list-cards-updated"
+  listCardsUpdated: "list-cards-updated",
+  searchResultsUpdated: "search-results-updated"
 })
 
 myTrello.config(config)
