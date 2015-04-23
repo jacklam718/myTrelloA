@@ -19,15 +19,16 @@
       <md-toolbar md-scroll-shrink>
         <div class="md-toolbar-tools">
           <h3>
-            <span>MyTrello</span>
+            <md-button  ng-href="/">
+              MyTrello
+            </md-button>
           </h3>
 
           <span flex="5"></span>
 
-          <md-input-container md-no-float ng-controller="SearchController" search-directive>
-            <!-- <md-button ng-click="currentValue()" type="button" name="button">Button</button> -->
+          <md-input-container md-no-float ng-controller="SearchController">
             <ng-md-icon icon="search" size="24" class="search"></ng-md-icon>
-            <input type="text" placeholder="Search" class="md-primary" ng-change="searchCards" ng-model="searchQuery" search-directive>
+            <input type="text" placeholder="Search" class="md-primary" ng-model="searchText" search-directive>
           </md-input-container>
 
           <span flex></span>
@@ -66,10 +67,12 @@
 
     <!-- link directives -->
     <script src="/javascripts/ng-app/directives/search-directive.js"></script>
+    <script src="/javascripts/ng-app/directives/list-name-directive.js"></script>
 
     <!-- link services -->
     <!-- // <script src="/javascripts/ng-app/services/boards-service.js"></script> -->
     <!-- // <script src="/javascripts/ng-app/services/data-update-service.js"></script> -->
+    <script src="/javascripts/ng-app/services/search-service.js"></script>
 
     <!-- link controllers -->
     <script src="/javascripts/ng-app/controllers/boards-controller.js"></script>
