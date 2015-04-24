@@ -6,4 +6,4 @@ you should make sure you have installed bower.
 ####run the app you can run following commands:
 * `bundle install`
 * `bower install`
-* `ruby app.rb`
+* `bundle execu ruby app.rb`
