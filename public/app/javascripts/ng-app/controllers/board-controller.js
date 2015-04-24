@@ -1,7 +1,7 @@
 // "use strict";
 
 function BoardController($scope, $routeParams, $mdBottomSheet, $routeParams, $cookieStore, $mdDialog) {
-  $scope.displayCardsOrComments = false
+  $scope.displayCardsOrComments = true
   $scope.cardsComments = []
 
   $scope.showCommentDialog = function($event, card) {
