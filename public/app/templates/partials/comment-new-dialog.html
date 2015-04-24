@@ -1,0 +1,20 @@
+<md-dialog aria-label="Comment">
+  <md-content class="sticky-container">
+    <md-subheader class="md-sticky-no-effect">Comment</md-subheader>
+    <div class="dialog-content">
+      <md-input-container flex>
+        <textarea  columns="1" style="margin: 0;" ng-model="comment" max-length="150"></textarea>
+      </md-input-container>
+    </div>
+  </md-content>
+
+  <div class="md-actions" layout="row">
+    <md-button ng-href="" ng-click="cancel()">
+      <span class="md-inline-list-icon-label">Cancel</span>
+    </md-button>
+    <span flex></span>
+    <md-button ng-href="" ng-click="send()">
+      Send
+    </md-button>
+  </div>
+</md-dialog>

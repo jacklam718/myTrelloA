@@ -1,8 +1,17 @@
 // "use strict";
 
-function BoardController($scope, $routeParams, $mdBottomSheet, $routeParams, $cookieStore) {
+function BoardController($scope, $routeParams, $mdBottomSheet, $routeParams, $cookieStore, $mdDialog) {
   $scope.displayCardsOrComments = false
   $scope.cardsComments = []
+
+  $scope.showCommentDialog = function($event, card) {
+    $cookieStore.put("selectedCard", card);
+    $mdDialog.show({
+      controller: "CommentNewDialogController",
+      templateUrl: "templates/partials/comment-new-dialog.html",
+      targetEvent: $event
+    })
+  }
 
   $scope.showListBottomSheet = function($event, itemData) {
     $cookieStore.put("selectedItemData", itemData)

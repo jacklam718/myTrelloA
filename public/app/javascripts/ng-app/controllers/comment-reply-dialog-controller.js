@@ -8,7 +8,6 @@ function CommentReplyDialogController($scope, $mdDialog, $cookieStore) {
   }
 
   $scope.send = function() {
-    console.warn($scope.comment);
     if ($scope.comment !== "") {
       var itemData = $cookieStore.get("selectedItemData");
       MyTrello.replyComment(itemData.data.card.id, $scope.comment, itemData.memberCreator.username);

@@ -55,19 +55,34 @@
           <md-card-content>
 
             <div layout="row">
-              <div flex="95">
+              <div flex="90">
                 <h3 class="md-title card-name">
                   {{ card.name }}
                 </h3>
               </div>
+
+              <div flex>
+                <md-button ng-click="showCommentDialog($event, card)" class="md-fab md-primary" aria-label="Comment">
+                  <md-tooltip>
+                    Create a new comment
+                  </md-tooltip>
+                  <ng-md-icon icon="comment" size="24"></md-icon>
+                </md-button>
+              </div>
             </div>
 
             <div class="disc-content" ng-show="card.desc !== ''">
-              <h4 class="md-title">
-                Description
-              </h4>
+              <md-subheader class="md-no-sticky">Description:</md-subheader>
               <p>
                 {{ card.desc }}
+              </p>
+
+              <md-divider></md-divider>
+            </div>
+
+            <div class="comment-conetent" ng-show="card.badges.comments > 0">
+              <md-subheader class="md-no-sticky">{{ card.badges.comments }} comments</md-subheader>
+              <p padding-layout comment-directive="card">
               </p>
             </div>
           </md-card-content>

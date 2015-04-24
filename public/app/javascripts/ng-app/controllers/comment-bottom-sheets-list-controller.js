@@ -10,7 +10,7 @@ function CommentBottonSheetsListController($scope, $cookieStore, $mdDialog) {
   $scope.showReplyCommentDialog = function($event) {
     $mdDialog.show({
       controller: "CommentReplyDialogController",
-      templateUrl: "templates/partials/dialog.html",
+      templateUrl: "templates/partials/comment-reply-dialog.html",
       targetEvent: $event
     })
   }
