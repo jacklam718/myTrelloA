@@ -1,16 +1,24 @@
 "use strict";
 
-function CommentBottonSheetsListController($scope, $cookieStore) {
+function CommentBottonSheetsListController($scope, $cookieStore, $mdDialog) {
   $scope.items = [
     {name: "Reply", icon: "reply", action: MyTrello.replyComment},
     // {name: "Edit", icon: "edit", action: MyTrello.editComment},
     {name: "Mark Read", icon: "check_circle", action: MyTrello.markCommentAsRead}
   ]
 
-  $scope.listItemClick = function($index, $event) {
-    var clickedItem = $scope.items[$index];
-    itemData = $cookieStore.get("selectedItemData")
+  $scope.showReplyCommentDialog = function($event) {
+    $mdDialog.show({
+      controller: "CommentReplyDialogController",
+      templateUrl: "templates/partials/dialog.html",
+      targetEvent: $event
+    })
+  }
 
+  $scope.listItemClick = function($index, $event) {
+    console.warn($event);
+    var clickedItem = $scope.items[$index];
+    var itemData = $cookieStore.get("selectedItemData")
     switch ($index) {
       case 0:
         $scope.showReplyCommentDialog($event)

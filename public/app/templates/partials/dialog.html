@@ -1,20 +1,19 @@
-<md-dialog aria-label="Reply Comment" ng-controller="ReplyCommentDialogController">
+<md-dialog aria-label="Reply Comment">
   <md-content class="sticky-container">
     <md-subheader class="md-sticky-no-effect">Reply Comment</md-subheader>
     <div class="dialog-content">
       <md-input-container flex>
-        <label>Biography</label>
-        <textarea  columns="1" md-maxlength="150"></textarea>
+        <textarea  columns="1" style="margin: 0;" ng-model="comment" max-length="150"></textarea>
       </md-input-container>
     </div>
   </md-content>
 
   <div class="md-actions" layout="row">
     <md-button ng-href="" ng-click="cancel()">
-      Cancel
+      <span class="md-inline-list-icon-label">Cancel</span>
     </md-button>
     <span flex></span>
-    <md-button ng-href="" ng-click="reply('not useful')">
+    <md-button ng-href="" ng-click="send()">
       Reply
     </md-button>
   </div>

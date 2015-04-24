@@ -100,6 +100,17 @@ MyTrello.cardComments = function(cardId, func) {
   })
 }
 
+MyTrello.replyComment = function(cardId, comment, creator) {
+  var username = comment.match("@[a-zA-Z0-9]+");
+
+  if (username === null) {
+    comment = "@" + creator + " " + comment;
+  } else {
+    comment = comment.replace(username[0], "@" + creator);
+  }
+  this.postComment(cardId, comment);
+}
+
 MyTrello.postComment = function(cardId, comment) {
   var path = "/cards/" + cardId + "/actions/comments";
 

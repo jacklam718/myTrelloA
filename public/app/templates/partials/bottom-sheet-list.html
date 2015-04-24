@@ -2,7 +2,7 @@
   <!-- <md-subheader>Actions</md-subheader> -->
   <md-list>
     <md-item ng-repeat="item in items">
-      <md-button ng-click="listItemClick($index)">
+      <md-button ng-click="listItemClick($index, $event)">
         <ng-md-icon icon="{{ item.icon }}" size="24"></ng-md-icon>
         <span class="md-inline-list-icon-label">{{ item.name }}</span>
       </md-button>

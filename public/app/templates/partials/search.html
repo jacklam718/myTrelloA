@@ -1,8 +1,8 @@
 <div>
   <md-content ng-controller="SearchController">
-    <md-card ng-repeat="list in lists">
-      <h2 class="md-title" list-name-directive="list"></h2>
-
+    <div ng-repeat="list in lists">
+      <h2 layout-padding class="md-title" list-name-directive="list"></h2>
+      <md-divider></md-divider>
       <div ng-repeat="cards in list">
         <md-card ng-repeat="card in cards">
           <md-card-content>
@@ -17,6 +17,6 @@
           </md-card-content>
         </md-card>
       </div>
-    </md-card>
+    </div>
   </md-content>
 </div>

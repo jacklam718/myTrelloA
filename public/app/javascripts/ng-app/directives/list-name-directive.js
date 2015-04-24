@@ -11,7 +11,7 @@ function listNameDirective() {
       console.log(scope.listNameDirective);
 
       MyTrello.get("/lists/" + Object.keys(scope.listNameDirective)[0], function(list) {
-        var html = "<h2 class='md-title'>" + list.name + "</h2>"
+        var html = "<h2 layout-padding class='md-title'>" + list.name + "</h2>"
         element.html(html);
       })
     }
