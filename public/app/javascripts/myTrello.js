@@ -1,4 +1,4 @@
-MyTrello = Trello;
+MyTrello = Object.create(Trello);
 
 MyTrello.login = function(opts) {
   if (opts === undefined) {
